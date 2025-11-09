@@ -92,4 +92,13 @@ public class MainActivity extends AppCompatActivity {
         contactAdapter.notifyDataSetChanged();
     }
 
+    // New method to show contact details
+    public void showContact(int position) {
+        if (position >= 0 && position < list.size()) {
+            Contact contact = list.get(position);
+            ViewContactDialog viewContactDialog = new ViewContactDialog(contact);
+            viewContactDialog.show(getSupportFragmentManager(), "");
+        }
+    }
+
 }

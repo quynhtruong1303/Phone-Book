@@ -36,6 +36,7 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
         Contact contact = list.get(position);
 
         holder.textViewName.setText(contact.getName());
+        holder.textViewPhone.setText(contact.getPhone());
 
     }
 
@@ -50,17 +51,23 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ListItem
     public class ListItemHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
 
         private TextView textViewName;
+        private TextView textViewPhone;
+
         public ListItemHolder (View itemView) {
             super(itemView);
             textViewName = itemView.findViewById(R.id.nameTextView);
-            textViewName.setClickable(true);
-            textViewName.setOnClickListener(this);
+            textViewPhone = itemView.findViewById(R.id.phoneTextView);
+
+            // Make the entire item clickable
+            itemView.setClickable(true);
+            itemView.setOnClickListener(this);
 
         }
 
         public void onClick (View view) {
             int position = getAdapterPosition();
-
+            // Call showContact method in MainActivity with the position
+            mainActivity.showContact(position);
         }
 
 
